@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     {
         for(let i=0;i<size;i++)
         {
-            for(let j=0;jZ<size;j++)
+            for(let j=0;j<size;j++)
             {
                 const cell=document.querySelector('[data-row="${i}"][data-col="${j}"]');
                 const preValue= cell.dataset.value;
@@ -53,10 +53,27 @@ document.addEventListener('DOMContentLoaded',()=>{
                 {
                     cell.dataset.value=cntValue;
                     cell.textContent=cntValue;
-                    
+                    if(cntValue!=parseInt(preValue)&& ! cell.classList.contains("new-tile"))
+                    {
+                        cell.classList.add("merged-tile");
+                    }
+                    else
+                    {
+                        cell.textContent='';
+                        delete cell.dataset.value;
+                        cell.classList.remove("merged-tile",'new-tile');
+                    }
                 }
             }
+            setTimeout(() => {
+               const cells=document.querySelectorAll("grid-cell");
+               cells.forEach(cell=>{
+                cell.classList.remove("merged-tile",'new-tile');
+               });
+            },300);
         }
     }
+
+    
 
 })
