@@ -73,7 +73,20 @@ document.addEventListener('DOMContentLoaded',()=>{
             },300);
         }
     }
+    function place()
+    {
+        const available=[];
+        for(let i=0; i<size;i++)
+        {
+            for(let j=0;j<size;j++)
+            {
+                if(board[i][j]===0)
+                {
+                    available.push({x:i,y:j});
+                }
+            }
+        }
+    }
 
-    
 
 })
