@@ -86,7 +86,36 @@ document.addEventListener('DOMContentLoaded',()=>{
                 }
             }
         }
+        if(available.length>0)
+        {
+            const randomCell=available[Math.floor(Math.random()*available.length)];
+            board[randomCell.x][randomCell.y]=Math.random()<0.9? 2:4;
+            const cell=document.querySelector('[data-row="${randomCell.x}"][data-col="${randomCell.y}"]');
+            cell.classList.add("new-tile");
+
+        }
     }
 
+    function move(direction)
+    {
+        let f_change=false;
+        if(direction==='ArrowUp'||direction==="ArrowDown")
+        {
+            for(let j=0;j<size;j++)
+            {
+                const column=[...Array(size)].map((_,i)=>board[i][j]);
+                const newColumn=transform(column,dirction==="ArrowUp");
+                for(let i=0;i<size;i++)
+                {
+                    if(board[i][j]!=newColumn[i])
+                    {
+                        f_change=true;
+                        board[i][j]=newColumn[i];
+                    }
+                }
+            }
+        }
+        else if (dirction==="ArrowLeft"||)
+    }
 
 })
