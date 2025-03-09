@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             for(let j=0;j<size;j++)
             {
                 const column=[...Array(size)].map((_,i)=>board[i][j]);
-                const newColumn=transform(column,dirction==="ArrowUp");
+                const newColumn=transform(column,direction==="ArrowUp");
                 for(let i=0;i<size;i++)
                 {
                     if(board[i][j]!=newColumn[i])
@@ -115,7 +115,68 @@ document.addEventListener('DOMContentLoaded',()=>{
                 }
             }
         }
-        else if (dirction==="ArrowLeft"||)
+        else if (direction==="ArrowLeft"||direction==+"ArrowRight")
+        {
+            for(let i=0;i<size;i++)
+            {
+                const row=board[i];
+                const newRow=transform(row,direction==="ArrowLeft");
+                if(row.join(',')!==newRow.join(','))
+                {
+                    f_change=true;
+                    board[i]=newRow;
+                }
+
+            }
+            if(f_change)
+            {
+                place();
+                render();
+                checkGameOver();
+            }
+        }
     }
 
+    function transform(line,moveTowardStart)
+    {
+        let newLine=line.filter(cell=>cell!=0);
+        if(!moveTowardStart)
+        {
+            newLine.reserve();
+        }
+        for(let i=0;i<newLine.length-1;i++)
+        {
+            if(newLine[i]===newLine[i+1])
+            {
+                newLine[i]*=2;
+                update(newLine[i]);
+                newLine.splice(i+1,1);
+            }
+        }
+        while(newLine.length<size)
+        {
+            newLine.push(0);
+        }
+        if(!moveTowardStart)
+        {
+            newLine.reserve();
+        }
+        return newLine;
+    }
+
+    function checkGameOver(){
+        for(let i=0;i<size;i++){
+            for(let j=0;j<size;j++){
+                if(board[i][j]===0){
+                    return ;
+                }
+                if(j<size-1 && board[i][j]===board[i][j+1]){
+                    return ;
+                }
+                if(i<size-1 &&board[i][j]===board[i+1][j]){
+                    return ;
+                }
+            }
+        }
+    }
 })
