@@ -10,11 +10,16 @@ body{
 }
 
 .game-container{
+    width: 320px;
+    height: 320px;
+    border: 1px solid #ccc;
+    overflow:hidden;
+}
+.grid{
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    gap: 5px;
+    gap:5px;
 }
-
 .cell{
     width: 77px;
     height: 77px;

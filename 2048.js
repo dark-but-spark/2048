@@ -12,85 +12,71 @@ document.addEventListener('DOMContentLoaded',()=>{
     const GGElem= document.getElementById("game-over");
 
     function update(value)
-    {
+        {
         cnt+=value;
         cntElem.textContent=cnt;
         if(cnt>mx)
-        {
+                {
             mx=cnt;
             mxElem.textContent= mx;
             localStorage.setItem('2048-highScore',mx);
         }
     }
 
-
-    function restart()
-    {
-        cnt=0;
-        cntElem="0";
-        GGElem.style.diaplay='none';
+    function restart() {
+        cnt = 0;
+        cntElem.textContent = "0";
+        GGElem.style.display = 'none';
         init();
     }
 
-    function init()
-    {
-        board=[...Array(size)].map(e => Array(size).fill(0));
+    function init() {
+        board = [...Array(size)].map(e => Array(size).fill(0));
         place();
         place();
         render();
     }
 
-    function render()
-    {
-        for(let i=0;i<size;i++)
-        {
-            for(let j=0;j<size;j++)
-            {
-                const cell=document.querySelector('[data-row="${i}"][data-col="${j}"]');
-                const preValue= cell.dataset.value;
-                const cntValue= board[i][j];
-                if(cntValue!=0)
-                {
-                    cell.dataset.value=cntValue;
-                    cell.textContent=cntValue;
-                    if(cntValue!=parseInt(preValue)&& ! cell.classList.contains("new-tile"))
-                    {
+    function render() {
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                const cell = document.querySelector(`[data-row="${i}"][data-col="${j}"]`);
+                const preValue = cell.dataset.value;
+                const cntValue = board[i][j];
+                if (cntValue != 0) {
+                    cell.dataset.value = cntValue;
+                    cell.textContent = cntValue;
+                    if (cntValue != parseInt(preValue) && !cell.classList.contains("new-tile")) {
                         cell.classList.add("merged-tile");
                     }
-                    else
-                    {
-                        cell.textContent='';
+} else {
+                        cell.textContent = '';
                         delete cell.dataset.value;
-                        cell.classList.remove("merged-tile",'new-tile');
+                        cell.classList.remove("merged-tile", 'new-tile');
                     }
                 }
             }
             setTimeout(() => {
-               const cells=document.querySelectorAll("grid-cell");
-               cells.forEach(cell=>{
-                cell.classList.remove("merged-tile",'new-tile');
+               const cells = document.querySelectorAll(".cell");
+               cells.forEach(cell => {
+                cell.classList.remove("merged-tile", 'new-tile');
                });
-            },300);
+            }, 300);
         }
-    }
-    function place()
-    {
-        const available=[];
-        for(let i=0; i<size;i++)
-        {
-            for(let j=0;j<size;j++)
-            {
-                if(board[i][j]===0)
-                {
-                    available.push({x:i,y:j});
+    
+    function place() {
+        const available = [];
+        for (let i = 0; i < size; i++)         {
+            for (let j = 0; j < size; j++)             {
+                if (board[i][j] === 0)                 {
+                    available.push({ x: i, y: j });
                 }
             }
         }
-        if(available.length>0)
-        {
-            const randomCell=available[Math.floor(Math.random()*available.length)];
-            board[randomCell.x][randomCell.y]=Math.random()<0.9? 2:4;
-            const cell=document.querySelector('[data-row="${randomCell.x}"][data-col="${randomCell.y}"]');
+        if (available.length > 0)         {
+            const randomCell = available[Math.floor(Math.random() * available.length)];
+            board[randomCell.x][randomCell.y] = Math.random() < 0.9 ? 2 : 4;
+            const cell = document.querySelector(`[data-row="${randomCell.x}"][data-col="${randomCell.y}"]`);
             cell.classList.add("new-tile");
 
         }
@@ -115,7 +101,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 }
             }
         }
-        else if (direction==="ArrowLeft"||direction==+"ArrowRight")
+        else if (direction==="ArrowLeft"||direction==="ArrowRight")
         {
             for(let i=0;i<size;i++)
             {
@@ -136,13 +122,13 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         }
     }
-
+    
     function transform(line,moveTowardStart)
     {
         let newLine=line.filter(cell=>cell!=0);
         if(!moveTowardStart)
         {
-            newLine.reserve();
+            newLine.reverse();
         }
         for(let i=0;i<newLine.length-1;i++)
         {
@@ -159,7 +145,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         if(!moveTowardStart)
         {
-            newLine.reserve();
+            newLine.reverse();
         }
         return newLine;
     }
@@ -170,13 +156,22 @@ document.addEventListener('DOMContentLoaded',()=>{
                 if(board[i][j]===0){
                     return ;
                 }
-                if(j<size-1 && board[i][j]===board[i][j+1]){
+                if(j<size-1 && board[i][j]===board[i][j+1]){ 
                     return ;
                 }
                 if(i<size-1 &&board[i][j]===board[i+1][j]){
                     return ;
                 }
+
             }
         }
+        gameOverElem.style.display='flex';
     }
+    document.addEventListener('keydown',(event)=>{
+        if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.key)){
+            move(event.key);
+        }
+    });
+    document.getElementById('restart-btn').addEventListener('click',restart);
+    init();
 })
