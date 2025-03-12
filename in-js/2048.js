@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
             }
         }
-        gameOverElem.style.display='flex';
+        GGElem.style.display='flex';
     }
     document.addEventListener('keydown',(event)=>{
         if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(event.key)){
