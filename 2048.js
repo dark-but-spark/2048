@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         place();
         render();
     }
-
+    //
     function render() {
         for (let i = 0; i < size; i++) {
             for (let j = 0; j < size; j++) {
@@ -49,20 +49,20 @@ document.addEventListener('DOMContentLoaded',()=>{
                     if (cntValue != parseInt(preValue) && !cell.classList.contains("new-tile")) {
                         cell.classList.add("merged-tile");
                     }
-} else {
+                } else {
                         cell.textContent = '';
                         delete cell.dataset.value;
                         cell.classList.remove("merged-tile", 'new-tile');
-                    }
                 }
             }
-            setTimeout(() => {
-               const cells = document.querySelectorAll(".cell");
+        }
+        setTimeout(() => {
+            const cells = document.querySelectorAll(".cell");
                cells.forEach(cell => {
                 cell.classList.remove("merged-tile", 'new-tile');
                });
-            }, 300);
-        }
+        }, 300);
+    }
     
     function place() {
         const available = [];
@@ -114,12 +114,13 @@ document.addEventListener('DOMContentLoaded',()=>{
                 }
 
             }
-            if(f_change)
-            {
-                place();
-                render();
-                checkGameOver();
-            }
+            
+        }
+        if(f_change)
+        {
+            place();
+            render();
+            checkGameOver();
         }
     }
     
@@ -174,4 +175,4 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
     document.getElementById('restart-btn').addEventListener('click',restart);
     init();
-})
+});
