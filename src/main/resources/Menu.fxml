@@ -5,16 +5,34 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 
 <AnchorPane fx:id="background"
-        xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
             fx:controller="Menu"
-            prefHeight="720.0" prefWidth="1080.0"
+            prefHeight="569" prefWidth="720"
             styleClass="background"
-            stylesheet="@Menu.css"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Menu">
+            stylesheets="@Menu.css"
+            xmlns="http://javafx.com/javafx/23.0.2"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <children>
 
+<!--        <ImageView fitHeight="569" fitWidth="720" pickOnBounds="true" preserveRatio="true">-->
+<!--            <image>-->
+<!--                <Image url="@./img/bkg.jpg" />-->
+<!--            </image>-->
+<!--        </ImageView>-->
+        <VBox spacing="20" prefHeight="0" prefWidth="0" BorderPane.alignment="CENTER">
+            <Button fx:id="start" mnemonicParsing="false" onMouseReleased="#startAction"  styleClass="btn" text="开始游戏">
+<!--            <font>-->
+<!--                <Font name="Minecraft Pixel" size="50.0" />-->
+<!--            </font>-->
+            </Button>
+            <Button fx:id="exit" mnemonicParsing="false" onMouseReleased="#exitAction"  styleClass="btn" text="退出游戏">
+<!--                            <font>-->
+<!--                                <Font name="Minecraft Pixel" size="50.0" />-->
+<!--                            </font>-->
+            </Button>
+        </VBox>
+    </children>
 </AnchorPane>

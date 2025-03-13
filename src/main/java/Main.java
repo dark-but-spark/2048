@@ -6,9 +6,10 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) {
         System.out.println("Starting Game!");
-        BasicScene.Menu(primaryStage);
+//        BasicScene.Menu(primaryStage);
+        Menu.init(stage);
     }
     public static void main(String[] args) {
         launch(args);
