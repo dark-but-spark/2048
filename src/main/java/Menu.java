@@ -9,10 +9,6 @@ import javax.swing.*;
 
 public class Menu {
     @FXML
-    private static AnchorPane background;
-    @FXML
-    private static Button start;
-    @FXML
     private void startAction(){
         System.out.println("Game started!");
 
@@ -22,10 +18,12 @@ public class Menu {
         System.out.println("Good bye!");
         System.exit(0);
     }
-    public static void init(Stage stage) {
+    public static void initMenu(Stage stage) {
         System.out.println("Menu initialized!");
-        FXMLLoader loader = new FXMLLoader(Menu.class.getResource("Menu.fxml"));
+
         try {
+            Main.userCard.refreshUserCard();
+            FXMLLoader loader = new FXMLLoader(Menu.class.getResource("Menu.fxml"));
             AnchorPane root = loader.load();
             Scene scene = new Scene(root, 720, 569);
             stage.setTitle("2048");

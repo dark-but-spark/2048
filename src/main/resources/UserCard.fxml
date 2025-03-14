@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="UserCard"
+        alignment="CENTER"
+        spacing="10">
+<!--<Button-->
+<!--    alignment="TOP_CENTER"-->
+<!--    styleClass="user-card"-->
+<!--    prefHeight="300" prefWidth="300">-->
+<!--</Button>-->
+    <Button text="id:" styleClass="idLabel" />
+    <Button fx:id="idLabel" styleClass="idLabel" />
+    <Label text="name:" styleClass="nameLabel" />
+    <Label fx:id="nameLabel" styleClass="nameLabel"/>
+    <Label text="rank:" styleClass="rankLabel" />
+    <Label fx:id="rankLabel" styleClass="rankLabel"/>
+<!--    <Label  styleClass="idLabel" text="${id}" />-->
+<!--    <Label  styleClass="nameLabel" text="${name}"/>-->
+<!--    <Label  styleClass="rankLabel" text="${rank}"/>-->
+</VBox>
