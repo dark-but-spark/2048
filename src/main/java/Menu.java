@@ -25,6 +25,7 @@ public class Menu {
             Main.userCard.refreshUserCard();
             FXMLLoader loader = new FXMLLoader(Menu.class.getResource("Menu.fxml"));
             AnchorPane root = loader.load();
+            root.getChildren().add(Main.userCardRoot);
             Scene scene = new Scene(root, 720, 569);
             stage.setTitle("2048");
             stage.setScene(scene);

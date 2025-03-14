@@ -9,19 +9,21 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public static User user;
     public static UserCard userCard;
+    public static VBox userCardRoot;
     @Override
     public void init() {
         System.out.println("Init game");
+        user= new User(1,"admin",0,0);
     }
     @Override
     public void start(Stage stage) {
         System.out.println("Starting Game!");
 //        BasicScene.Menu(primaryStage);
-        user= new User(1,"admin",0,0);
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("UserCard.fxml"));
-            VBox userCardRoot = loader.load();
-            Main.userCard = loader.getController();
+            userCardRoot = loader.load();
+            userCard = loader.getController();
         } catch (Exception e) {
             e.printStackTrace();
         }

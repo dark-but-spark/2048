@@ -30,7 +30,5 @@
             <!--                            </font>-->
         </Button>
     </VBox>
-
-        <fx:include source="UserCard.fxml" />
     </HBox>
 </AnchorPane>
