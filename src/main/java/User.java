@@ -12,6 +12,6 @@ public class User {
         this.maxScore = maxScore;
         this.score = 0;
         this.times=times;
-        this.rank=(int)(this.maxScore*0.01+this.times*0.5)+1;
+        this.rank=(int)(this.maxScore*0.01+this.times*0.5)+4;
     }
 }

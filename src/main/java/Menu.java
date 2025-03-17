@@ -22,7 +22,6 @@ public class Menu {
         System.out.println("Menu initialized!");
 
         try {
-            Main.userCard.refreshUserCard();
             FXMLLoader loader = new FXMLLoader(Menu.class.getResource("Menu.fxml"));
             AnchorPane menuRoot = loader.load();
             menuRoot.getChildren().add(Main.userCardRoot);

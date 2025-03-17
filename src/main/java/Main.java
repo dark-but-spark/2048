@@ -10,10 +10,12 @@ public class Main extends Application {
     public static User user;
     public static UserCard userCard;
     public static Pane userCardRoot;
+    public static Clock clock;
     @Override
     public void init() {
         System.out.println("Init game");
         user= new User(1,"admin",0,0);
+        clock=new Clock();
     }
     @Override
     public void start(Stage stage) {
@@ -27,6 +29,8 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        clock.f[1]=true;
+        clock.refreshStart();
         Menu.initMenu(stage);
     }
     @Override
