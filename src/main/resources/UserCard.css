@@ -1,14 +1,13 @@
-.user-card{
-    -fx-background-color:rgba(255,255,255,0.3);
-    -fx-background-radius: 10;
-    -fx-padding: 10;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0.5, 0, 0);
-    -fx-backdrop-filter: blur(10px);
-    -fx-font-size: 40px;
-    -fx-text-fill: black;
-    -fx-min-width: 300px;
-    -fx-min-height:300px;
+.user-card {
+    -fx-fill: rgba(255, 255, 255, 0.15); /* 半透明白色基底 */
+    -fx-arc-height: 10;
+    -fx-arc-width: 10;
+    -fx-backdrop-filter: blur(15px) saturate(150%); /* 亚克力模糊+饱和度 */
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
 }
+
 .idLabel{
     -fx-background-color:rgba(255,255,255,0.3);
     -fx-background-radius: 10;

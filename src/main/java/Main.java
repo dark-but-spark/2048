@@ -4,12 +4,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 public class Main extends Application {
     public static User user;
     public static UserCard userCard;
-    public static VBox userCardRoot;
+    public static Pane userCardRoot;
     @Override
     public void init() {
         System.out.println("Init game");

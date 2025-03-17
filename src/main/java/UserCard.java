@@ -5,7 +5,7 @@ import javafx.scene.layout.VBox;
 
 public class UserCard {
     @FXML
-    private Button idLabel;
+    private Label idLabel;
     @FXML
     private Label nameLabel;
     @FXML

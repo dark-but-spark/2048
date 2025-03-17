@@ -8,8 +8,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -25,28 +25,28 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>23.0.1</version>
+            <version>23.0.2</version>
         </dependency>
 
         <!-- JavaFX FXML -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>23.0.1</version>
+            <version>23.0.2</version>
         </dependency>
 
         <!-- JavaFX Base -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-base</artifactId>
-            <version>23.0.1</version>
+            <version>23.0.2</version>
         </dependency>
 
         <!-- JavaFX Graphics -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>23.0.1</version>
+            <version>23.0.2</version>
         </dependency>
     </dependencies>
 
@@ -61,11 +61,15 @@
                         <goals>
                             <goal>run</goal>
                         </goals>
-                        <configuration>
-                            <mainClass>Main</mainClass> <!-- Replace with your fully qualified Main class name -->
-                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <mainClass>Main</mainClass>
+                    <options>
+                        <option>--module-path</option>
+                        <option>C:/javafx-sdk-23.0.2/jmods</option>
+                    </options>
+                </configuration>
             </plugin>
         </plugins>
     </build>

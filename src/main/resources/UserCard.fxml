@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="UserCard"
-        alignment="CENTER"
-        spacing="10">
+<Pane layoutX="500" layoutY="10"
+      style="-fx-background-color: transparent;"
+      stylesheets="@Menu.css" xmlns="http://javafx.com/javafx/23.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserCard" >
+    <Rectangle arcHeight="10" arcWidth="10" height="160" width="180" styleClass="user-card"  />
+
+    <VBox alignment="CENTER" prefHeight="158.0" prefWidth="183.0" spacing="10" >
 <!--<Button-->
 <!--    alignment="TOP_CENTER"-->
 <!--    styleClass="user-card"-->
 <!--    prefHeight="300" prefWidth="300">-->
 <!--</Button>-->
-    <Button text="id:" styleClass="idLabel" />
-    <Button fx:id="idLabel" styleClass="idLabel" />
-    <Label text="name:" styleClass="nameLabel" />
-    <Label fx:id="nameLabel" styleClass="nameLabel"/>
-    <Label text="rank:" styleClass="rankLabel" />
-    <Label fx:id="rankLabel" styleClass="rankLabel"/>
+        <Label styleClass="idLabel" text="id:" />
+        <Label fx:id="idLabel" styleClass="idLabel" />
+        <Label styleClass="nameLabel" text="name:" />
+        <Label fx:id="nameLabel" styleClass="nameLabel" />
+        <Label styleClass="rankLabel" text="rank:" />
+        <Label fx:id="rankLabel" styleClass="rankLabel" />
 <!--    <Label  styleClass="idLabel" text="${id}" />-->
 <!--    <Label  styleClass="nameLabel" text="${name}"/>-->
 <!--    <Label  styleClass="rankLabel" text="${rank}"/>-->
-</VBox>
+    </VBox>
+</Pane>
