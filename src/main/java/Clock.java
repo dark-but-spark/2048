@@ -2,7 +2,7 @@ public class Clock {
 
     public int FPS=60;
     public int tick=1000/FPS;
-    public boolean f[]=new boolean[100];
+    public int f[]=new int[100];
     public void refreshStart(){
         Thread thread = new Thread(() -> {refresh();});
         thread.start();
@@ -10,8 +10,12 @@ public class Clock {
     public void refresh(){
         while(true)
         {
-            if(f[1]) {
+            if(f[1]==1) {
             Main.userCard.refreshUserCard();
+            }
+            if(f[2]==1)
+            {
+                Main.game.refreshGame();
             }
             try {
                 Thread.sleep(tick);

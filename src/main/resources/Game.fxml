@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Game"
+            prefHeight="570" prefWidth="720"
+            stylesheets="@Game.css">
+    <VBox spacing="10" layoutX="100" layoutY="100">
+        <HBox spacing="10">
+            <Label fx:id="Cell00" styleClass="cell"/>
+            <Label fx:id="Cell01" styleClass="cell"/>
+            <Label fx:id="Cell02" styleClass="cell"/>
+            <Label fx:id="Cell03" styleClass="cell"/>
+        </HBox>
+        <HBox>
+            <Label fx:id="Cell10" styleClass="cell"/>
+            <Label fx:id="Cell11" styleClass="cell"/>
+            <Label fx:id="Cell12" styleClass="cell"/>
+            <Label fx:id="Cell13" styleClass="cell"/>
+        </HBox>
+        <HBox>
+            <Label fx:id="Cell20" styleClass="cell"/>
+            <Label fx:id="Cell21" styleClass="cell"/>
+            <Label fx:id="Cell22" styleClass="cell"/>
+            <Label fx:id="Cell23" styleClass="cell"/>
+        </HBox>
+        <HBox>
+            <Label fx:id="Cell30" styleClass="cell"/>
+            <Label fx:id="Cell31" styleClass="cell"/>
+            <Label fx:id="Cell32" styleClass="cell"/>
+            <Label fx:id="Cell33" styleClass="cell"/>
+        </HBox>
+
+    </VBox>
+
+</AnchorPane>

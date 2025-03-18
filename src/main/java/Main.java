@@ -11,14 +11,20 @@ public class Main extends Application {
     public static UserCard userCard;
     public static Pane userCardRoot;
     public static Clock clock;
+    public static Game game;
+    public static Menu menu;
+    public static Stage stage;
     @Override
     public void init() {
         System.out.println("Init game");
         user= new User(1,"admin",0,0);
         clock=new Clock();
+        game=new Game();
+        menu=new Menu();
     }
     @Override
-    public void start(Stage stage) {
+    public void start(Stage primarystage) {
+        stage=primarystage;
         System.out.println("Starting Game!");
 //        BasicScene.Menu(primaryStage);
 
@@ -29,9 +35,9 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        clock.f[1]=true;
+        clock.f[1]=1;
         clock.refreshStart();
-        Menu.initMenu(stage);
+        menu.initMenu();
     }
     @Override
     public void stop() {

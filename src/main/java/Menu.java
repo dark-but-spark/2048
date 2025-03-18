@@ -8,9 +8,15 @@ import javafx.scene.control.Button;
 import javax.swing.*;
 
 public class Menu {
+    public Menu(){
+        ;
+    }
     @FXML
     private void startAction(){
         System.out.println("Game started!");
+        Main.clock.f[1]=0;
+        Main.game.initGame();
+
 
     }
     @FXML
@@ -18,20 +24,21 @@ public class Menu {
         System.out.println("Good bye!");
         System.exit(0);
     }
-    public static void initMenu(Stage stage) {
+    public void initMenu() {
         System.out.println("Menu initialized!");
 
         try {
-            FXMLLoader loader = new FXMLLoader(Menu.class.getResource("Menu.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
             AnchorPane menuRoot = loader.load();
             menuRoot.getChildren().add(Main.userCardRoot);
             Scene scene = new Scene(menuRoot, 720, 569);
-            stage.setTitle("2048");
-            stage.setScene(scene);
-            stage.show();
+            Main.stage.setTitle("2048");
+            Main.stage.setScene(scene);
+            Main.stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
     }
 }
