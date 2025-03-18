@@ -18,7 +18,6 @@ public class Game {
 
     private Label[][] Cells;
     private int[][] CellsValue;
-
     //This is a method that initializes the game
     public Game()
     {
@@ -26,14 +25,24 @@ public class Game {
     }
     public void initGame(){
         System.out.println("Game is starting!");
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("Game.fxml"));
+            AnchorPane gameRoot=loader.load();
+            Main.game=loader.getController();
+            Scene scene=new Scene(gameRoot,720,569);
+            Main.stage.setScene(scene);
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
         Cells=new Label[4][4];
         CellsValue=new int[4][4];
-        Cells[0][0]=Cell00;Cells[0][1]=Cell01;Cells[0][2]=Cell02;Cells[0][3]=Cell03;
-        Cells[1][0]=Cell10;Cells[1][1]=Cell11;Cells[1][2]=Cell12;Cells[1][3]=Cell13;
-        Cells[2][0]=Cell20;Cells[2][1]=Cell21;Cells[2][2]=Cell22;Cells[2][3]=Cell23;
-        Cells[3][0]=Cell30;Cells[3][1]=Cell31;Cells[3][2]=Cell32;Cells[3][3]=Cell33;
+        Cells[0][0]=this.Cell00;Cells[0][1]=this.Cell01;Cells[0][2]=this.Cell02;Cells[0][3]=this.Cell03;
+        Cells[1][0]=this.Cell10;Cells[1][1]=this.Cell11;Cells[1][2]=this.Cell12;Cells[1][3]=this.Cell13;
+        Cells[2][0]=this.Cell20;Cells[2][1]=this.Cell21;Cells[2][2]=this.Cell22;Cells[2][3]=this.Cell23;
+        Cells[3][0]=this.Cell30;Cells[3][1]=this.Cell31;Cells[3][2]=this.Cell32;Cells[3][3]=this.Cell33;
 
         System.out.println("Label set complete!");
+
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){
                 CellsValue[i][j]=(i+1)*10+j+1;
@@ -42,16 +51,9 @@ public class Game {
         }
         System.out.println("Value set complete!");
         Main.clock.f[2]=1;
-        try{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("Game.fxml"));
-            AnchorPane gameRoot=loader.load();
-            Scene scene=new Scene(gameRoot,720,569);
-            Main.stage.setScene(scene);
-            Main.stage.setTitle("Game");
-            Main.stage.show();
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
+
+        Main.stage.setTitle("Game");
+        Main.stage.show();
     }
 
     //This is a method that random place the basic elements

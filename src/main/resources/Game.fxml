@@ -18,19 +18,19 @@
             <Label fx:id="Cell02" styleClass="cell"/>
             <Label fx:id="Cell03" styleClass="cell"/>
         </HBox>
-        <HBox>
+        <HBox spacing="10">
             <Label fx:id="Cell10" styleClass="cell"/>
             <Label fx:id="Cell11" styleClass="cell"/>
             <Label fx:id="Cell12" styleClass="cell"/>
             <Label fx:id="Cell13" styleClass="cell"/>
         </HBox>
-        <HBox>
+        <HBox spacing="10">
             <Label fx:id="Cell20" styleClass="cell"/>
             <Label fx:id="Cell21" styleClass="cell"/>
             <Label fx:id="Cell22" styleClass="cell"/>
             <Label fx:id="Cell23" styleClass="cell"/>
         </HBox>
-        <HBox>
+        <HBox spacing="10">
             <Label fx:id="Cell30" styleClass="cell"/>
             <Label fx:id="Cell31" styleClass="cell"/>
             <Label fx:id="Cell32" styleClass="cell"/>

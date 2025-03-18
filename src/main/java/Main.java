@@ -21,6 +21,7 @@ public class Main extends Application {
         clock=new Clock();
         game=new Game();
         menu=new Menu();
+
     }
     @Override
     public void start(Stage primarystage) {
@@ -35,6 +36,7 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         clock.f[1]=1;
         clock.refreshStart();
         menu.initMenu();
