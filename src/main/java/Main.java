@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -12,6 +13,7 @@ public class Main extends Application {
     public static Pane userCardRoot;
     public static Clock clock;
     public static Game game;
+    public static AnchorPane gameRoot;
     public static Menu menu;
     public static Stage stage;
     @Override
@@ -36,7 +38,14 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("Game.fxml"));
+            gameRoot=loader.load();
+            game=loader.getController();
 
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
         clock.f[1]=1;
         clock.refreshStart();
         menu.initMenu();
