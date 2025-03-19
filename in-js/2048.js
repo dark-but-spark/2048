@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         }
         setTimeout(() => {
-            const cells = document.querySelectorAll(".cell");
+            const cells = document.querySelectorAll(".rankLabel");
                cells.forEach(cell => {
                 cell.classList.remove("merged-tile", 'new-tile');
                });
