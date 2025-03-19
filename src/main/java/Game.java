@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Game {
@@ -17,12 +18,31 @@ public class Game {
             Cell30,Cell31,Cell32,Cell33;
     @FXML
     private Label Score,MaxScore;
+    @FXML
+    private Pane GameOverPane;
+    @FXML
+    private Pane MoreButton;
 
     private Label[][] Cells;
     private int[][] CellsValue;
     //This is a method that initializes the game
     public Game()
     {
+    }
+    @FXML
+    private void showButton(){
+        Thread thread = new Thread(() -> {
+            MoreButton.setVisible(true);
+            try{
+                Thread.sleep(5000);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+            MoreButton.setVisible(false);
+
+
+        });
+        thread.start();
     }
     @FXML
     private void keyAction(KeyEvent event)
@@ -74,7 +94,7 @@ public class Game {
     @FXML
     public void restartGame(){
         System.out.println("Game is restarting!");
-
+        GameOverPane.setVisible(false);
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){
                 CellsValue[i][j]=0;
@@ -86,7 +106,7 @@ public class Game {
     }
     public void initGame(){
         System.out.println("Game is starting!");
-
+        GameOverPane.setVisible(false);
         Cells=new Label[4][4];
         CellsValue=new int[4][4];
         Cells[0][0]=Cell00;Cells[0][1]=Cell01;Cells[0][2]=Cell02;Cells[0][3]=Cell03;
@@ -173,50 +193,47 @@ public class Game {
     }
     int[] newValue;
     //This is a method that move the elements
-    public void move(int id){//1:up 2:down 3:left 4:right
-        int f_change=0;
+    public void move(int id) {//1:up 2:down 3:left 4:right
+        int f_change = 0;
 
-        if(id==1 || id==2)
-        {
-            for(int j=0;j<4;j++)
-            {
-                int[] column=new int[4];
-                for(int i=0;i<4;i++)
-                {
-                    column[i]=CellsValue[i][j];
+        if (id == 1 || id == 2) {
+            for (int j = 0; j < 4; j++) {
+                int[] column = new int[4];
+                for (int i = 0; i < 4; i++) {
+                    column[i] = CellsValue[i][j];
                 }
-                transform(column,id==1);
-                for(int i=0;i<4;i++)
-                {
-                    if(newValue[i]!=CellsValue[i][j])
-                    {
-                        f_change=1;
+                transform(column, id == 1);
+                for (int i = 0; i < 4; i++) {
+                    if (newValue[i] != CellsValue[i][j]) {
+                        f_change = 1;
                     }
-                    CellsValue[i][j]=newValue[i];
+                    CellsValue[i][j] = newValue[i];
 
                 }
-                newValue=null;
+                newValue = null;
             }
-        }
-        else if(id==3||id==4) {
-            for (int i = 0; i <4; i++) {
+        } else if (id == 3 || id == 4) {
+            for (int i = 0; i < 4; i++) {
                 int[] row = new int[4];
                 for (int j = 0; j < 4; j++) {
                     row[j] = CellsValue[i][j];
                 }
                 transform(row, id == 3);
                 for (int j = 0; j < 4; j++) {
-                    if(newValue[j]!=CellsValue[i][j])
-                    {
-                        f_change=1;
+                    if (newValue[j] != CellsValue[i][j]) {
+                        f_change = 1;
                     }
                     CellsValue[i][j] = newValue[j];
                 }
-                newValue=null;
+                newValue = null;
             }
         }
-        if(f_change==1) {
+        if (f_change == 1) {
             this.randomPlace();
+        }
+        if (gameOver())
+        {
+            GameOverPane.setVisible(true);
         }
     }
 
