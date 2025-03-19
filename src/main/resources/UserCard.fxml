@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane layoutX="500" layoutY="10" style="-fx-background-color: transparent;" stylesheets="@UserCard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserCard">
+    <Rectangle arcHeight="10" arcWidth="10" height="200" styleClass="user-card" width="200" />
+
+    <VBox alignment="CENTER" prefHeight="200" prefWidth="200" spacing="10">
+<!--<Button-->
+<!--    alignment="TOP_CENTER"-->
+<!--    styleClass="user-card"-->
+<!--    prefHeight="300" prefWidth="300">-->
+<!--</Button>-->
+<!--        <Label styleClass="idLabel" text="id:" />-->
+        <Label fx:id="idLabel" styleClass="idLabel" />
+<!--        <Label styleClass="nameLabel" text="name:" />-->
+        <Label fx:id="nameLabel" styleClass="nameLabel" />
+<!--        <Label styleClass="rankLabel" text="rank:" />-->
+        <Label fx:id="rankLabel" styleClass="rankLabel" />
+<!--    <Label  styleClass="idLabel" text="${id}" />-->
+<!--    <Label  styleClass="nameLabel" text="${name}"/>-->
+<!--    <Label  styleClass="rankLabel" text="${rank}"/>-->
+    </VBox>
+</Pane>
