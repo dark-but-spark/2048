@@ -173,7 +173,9 @@ public class Game {
     }
     int[] newValue;
     //This is a method that move the elements
-    public void move(int id){ //1:up 2:down 3:left 4:right
+    public void move(int id){//1:up 2:down 3:left 4:right
+        int f_change=0;
+
         if(id==1 || id==2)
         {
             for(int j=0;j<4;j++)
@@ -186,8 +188,14 @@ public class Game {
                 transform(column,id==1);
                 for(int i=0;i<4;i++)
                 {
+                    if(newValue[i]!=CellsValue[i][j])
+                    {
+                        f_change=1;
+                    }
                     CellsValue[i][j]=newValue[i];
+
                 }
+                newValue=null;
             }
         }
         else if(id==3||id==4) {
@@ -198,11 +206,18 @@ public class Game {
                 }
                 transform(row, id == 3);
                 for (int j = 0; j < 4; j++) {
+                    if(newValue[j]!=CellsValue[i][j])
+                    {
+                        f_change=1;
+                    }
                     CellsValue[i][j] = newValue[j];
                 }
+                newValue=null;
             }
         }
-        this.randomPlace();
+        if(f_change==1) {
+            this.randomPlace();
+        }
     }
 
     //This is a method that transform the elements

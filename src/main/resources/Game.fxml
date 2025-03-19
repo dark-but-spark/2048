@@ -8,6 +8,7 @@
             fx:controller="Game"
             prefHeight="570" prefWidth="720"
             stylesheets="@Game.css"
+            styleClass="background"
             onKeyReleased="#keyAction">
 
     <VBox spacing="10" layoutX="100" layoutY="10">
@@ -43,9 +44,6 @@
             <Button text="返回主菜单" styleClass="btn" onMouseReleased="#returnMenu"/>
             <Button text="重新开始" styleClass="btn" onMouseReleased="#restartGame"/>
             <Button text="退出游戏" styleClass="btn" onMouseReleased="#exitGame"/>
-        </HBox>
-        <HBox>
-            <Button />
         </HBox>
 
     </VBox>

@@ -24,3 +24,7 @@
     -fx-min-width: 50px;
     -fx-min-height:25px;
 }
+.background{
+    -fx-background-image: url("img/bkg.jpg");
+    -fx-background-size: cover;
+}
