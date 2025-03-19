@@ -5,6 +5,7 @@
 
 
 <AnchorPane
+
         fx:controller="Menu"
         prefHeight="569" prefWidth="720"
         styleClass="background"

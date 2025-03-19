@@ -1,3 +1,5 @@
+import javafx.application.Platform;
+
 public class Clock {
 
     public int FPS=60;
@@ -11,11 +13,11 @@ public class Clock {
         while(true)
         {
             if(f[1]==1) {
-            Main.userCard.refreshUserCard();
+                Platform.runLater(() -> Main.userCard.refreshUserCard());
             }
             if(f[2]==1)
             {
-                Main.game.refreshGame();
+                Platform.runLater(() -> Main.game.refreshGame());
             }
             try {
                 Thread.sleep(tick);

@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.Pane;
@@ -22,6 +23,7 @@ public class Main extends Application {
 
     public static Stage stage;
 
+
     @Override
     public void init() {
         System.out.println("Init game");
@@ -29,7 +31,6 @@ public class Main extends Application {
         clock=new Clock();
         game=new Game();
         menu=new Menu();
-
     }
     @Override
     public void start(Stage primarystage) {

@@ -3,6 +3,8 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -22,6 +24,39 @@ public class Game {
     public Game()
     {
     }
+    @FXML
+    private void keyAction(KeyEvent event)
+    {
+        KeyCode keyCode = event.getCode();
+//        System.out.println("Key Pressed: " + keyCode.getName());
+        if(keyCode==KeyCode.UP)
+        {
+//            System.out.println("UP");
+            Main.game.move(1);
+        }
+        else if(keyCode==KeyCode.DOWN)
+        {
+//            System.out.println("DOWN");
+            Main.game.move(2);
+        }
+        else if(keyCode==KeyCode.LEFT)
+        {
+//            System.out.println("LEFT");
+            Main.game.move(3);
+        }
+        else if(keyCode==KeyCode.RIGHT)
+        {
+//            System.out.println("RIGHT");
+            Main.game.move(4);
+        }
+        else if(keyCode==KeyCode.ESCAPE)
+        {
+            System.out.println("Return to menu!");
+            Main.clock.f[2]=0;
+            Main.clock.f[1]=1;
+            Main.menu.initMenu();
+        }
+    }
 
     @FXML
     private void returnMenu(){
@@ -37,6 +72,18 @@ public class Game {
         System.exit(0);
     }
     @FXML
+    public void restartGame(){
+        System.out.println("Game is restarting!");
+
+        for(int i=0;i<4;i++){
+            for(int j=0;j<4;j++){
+                CellsValue[i][j]=0;
+            }
+        }
+        this.randomPlace();this.randomPlace();
+        Main.user.score=0;
+        Main.user.times++;
+    }
     public void initGame(){
         System.out.println("Game is starting!");
 
@@ -47,7 +94,6 @@ public class Game {
         Cells[2][0]=Cell20;Cells[2][1]=Cell21;Cells[2][2]=Cell22;Cells[2][3]=Cell23;
         Cells[3][0]=Cell30;Cells[3][1]=Cell31;Cells[3][2]=Cell32;Cells[3][3]=Cell33;
 
-
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){
                 CellsValue[i][j]=0;
@@ -56,6 +102,7 @@ public class Game {
         this.randomPlace();this.randomPlace();
         Main.user.score=0;
         Main.user.times++;
+
         Main.clock.f[2]=1;
         Scene scene=new Scene(Main.gameRoot,720,569);
 
@@ -124,9 +171,87 @@ public class Game {
             Main.user.maxScore=Main.user.score;
         }
     }
-
+    int[] newValue;
     //This is a method that move the elements
-    public void move(){
+    public void move(int id){ //1:up 2:down 3:left 4:right
+        if(id==1 || id==2)
+        {
+            for(int j=0;j<4;j++)
+            {
+                int[] column=new int[4];
+                for(int i=0;i<4;i++)
+                {
+                    column[i]=CellsValue[i][j];
+                }
+                transform(column,id==1);
+                for(int i=0;i<4;i++)
+                {
+                    CellsValue[i][j]=newValue[i];
+                }
+            }
+        }
+        else if(id==3||id==4) {
+            for (int i = 0; i <4; i++) {
+                int[] row = new int[4];
+                for (int j = 0; j < 4; j++) {
+                    row[j] = CellsValue[i][j];
+                }
+                transform(row, id == 3);
+                for (int j = 0; j < 4; j++) {
+                    CellsValue[i][j] = newValue[j];
+                }
+            }
+        }
+        this.randomPlace();
+    }
 
+    //This is a method that transform the elements
+    public void transform(int[] column, boolean id){
+        newValue=new int[4];
+        int k=0;
+        for(int i=0;i<4;i++)
+        {
+            if(column[i]!=0)
+            {
+                newValue[k++]=column[i];
+            }
+        }
+        if(!id)
+        {
+            for(int i=0;i*2<k;i++)
+            {
+                int t=newValue[i];
+                newValue[i]=newValue[k-i-1];
+                newValue[k-i-1]=t;
+            }
+
+        }
+        for(int i=0;i<k-1;i++)
+        {
+            if(newValue[i]==newValue[i+1])
+            {
+                newValue[i]*=2;
+                updateScore(newValue[i]);
+                for(int j=i+1;j<k-1;j++)
+                {
+                    newValue[j]=newValue[j+1];
+                }
+                newValue[k-1]=0;
+            }
+        }
+        while(k<4)
+        {
+            newValue[k++]=0;
+        }
+        if(!id)
+        {
+            for(int i=0;i*2<k;i++)
+            {
+                int t=newValue[i];
+                newValue[i]=newValue[k-i-1];
+                newValue[k-i-1]=t;
+            }
+
+        }
     }
 }

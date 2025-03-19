@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -10,7 +7,8 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="Game"
             prefHeight="570" prefWidth="720"
-            stylesheets="@Game.css">
+            stylesheets="@Game.css"
+            onKeyReleased="#keyAction">
 
     <VBox spacing="10" layoutX="100" layoutY="10">
         <HBox spacing="100" alignment="TOP_CENTER">
@@ -43,7 +41,7 @@
         </HBox>
         <HBox spacing="10" alignment="CENTER">
             <Button text="返回主菜单" styleClass="btn" onMouseReleased="#returnMenu"/>
-            <Button text="重新开始" styleClass="btn" onMouseReleased="#initGame"/>
+            <Button text="重新开始" styleClass="btn" onMouseReleased="#restartGame"/>
             <Button text="退出游戏" styleClass="btn" onMouseReleased="#exitGame"/>
         </HBox>
         <HBox>
