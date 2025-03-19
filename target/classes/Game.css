@@ -1,0 +1,37 @@
+.cell{
+    -fx-background-color:rgba(255,255,255,0.3);
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0.5, 0, 0);
+    -fx-alignment: CENTER;
+    -fx-font-size: 20px;
+    -fx-text-fill: black;
+    -fx-min-width: 100px;
+    -fx-min-height:100px;
+}
+.score{
+    -fx-font-size: 10px;
+    -fx-text-fill: black;
+    -fx-font-style: italic;
+}
+.btn{
+    -fx-background-color: rgba(255,255,255,0.3);
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0.5, 0, 0);
+    /*-fx-backdrop-filter: blur(10px);*/
+    -fx-font-size: 20px;
+    -fx-min-width: 50px;
+    -fx-min-height:25px;
+}
+.background{
+    -fx-background-image: url("img/bkg.jpg");
+    -fx-background-size: cover;
+}
+.gameover{
+    -fx-background-color: pink;
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0.5, 0, 0);
+    -fx-font: 40px;
+}

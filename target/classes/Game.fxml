@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Game"
+            prefHeight="570" prefWidth="720"
+            stylesheets="@Game.css"
+            styleClass="background"
+            onKeyReleased="#keyAction">
+
+
+
+    <VBox spacing="10" layoutX="100" layoutY="10">
+        <HBox spacing="100" alignment="TOP_CENTER">
+            <Label fx:id="Score" styleClass="score"/>
+            <Label fx:id="MaxScore" styleClass="score"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label fx:id="Cell00" styleClass="cell"/>
+            <Label fx:id="Cell01" styleClass="cell"/>
+            <Label fx:id="Cell02" styleClass="cell"/>
+            <Label fx:id="Cell03" styleClass="cell"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label fx:id="Cell10" styleClass="cell"/>
+            <Label fx:id="Cell11" styleClass="cell"/>
+            <Label fx:id="Cell12" styleClass="cell"/>
+            <Label fx:id="Cell13" styleClass="cell"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label fx:id="Cell20" styleClass="cell"/>
+            <Label fx:id="Cell21" styleClass="cell"/>
+            <Label fx:id="Cell22" styleClass="cell"/>
+            <Label fx:id="Cell23" styleClass="cell"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label fx:id="Cell30" styleClass="cell"/>
+            <Label fx:id="Cell31" styleClass="cell"/>
+            <Label fx:id="Cell32" styleClass="cell"/>
+            <Label fx:id="Cell33" styleClass="cell"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="游戏选项" styleClass="btn" onMouseReleased="#showButton"/>
+            <Pane fx:id="MoreButton" visible="false" managed="true">
+                <children>
+                    <HBox>
+                        <Button text="返回主菜单" styleClass="btn" onMouseReleased="#returnMenu"/>
+                        <Button text="重新开始" styleClass="btn" onMouseReleased="#restartGame"/>
+                        <Button text="退出游戏" styleClass="btn" onMouseReleased="#exitGame"/>
+                    </HBox>
+                </children>
+            </Pane>
+        </HBox>
+    </VBox>
+    <Pane fx:id="GameOverPane" style="-fx-background-color: transparent;" prefWidth="720" prefHeight="570" visible="true" managed="true">
+        <children>
+            <VBox spacing="50" alignment="CENTER" layoutX="150" layoutY="10" styleClass="gameover">
+                <Label text="Game Over!!!" style="-fx-font-size:40px;"/>
+                <HBox spacing="10" alignment="CENTER">
+
+                    <Button text="返回主菜单" styleClass="btn" onMouseReleased="#returnMenu"/>
+                    <Button text="重新开始" styleClass="btn" onMouseReleased="#restartGame"/>
+                    <Button text="退出游戏" styleClass="btn" onMouseReleased="#exitGame"/>
+                </HBox>
+            </VBox>
+        </children>
+    </Pane>
+</AnchorPane>
