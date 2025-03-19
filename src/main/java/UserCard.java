@@ -25,7 +25,7 @@ public class UserCard {
             String color=String.format("-fx-background-color:#%06XA0;",cnt);
 //            System.out.println(color);
 //            cnt--;
-            Main.userCard.rankLabel.setStyle(color);
+            this.rankLabel.setStyle("-fx-background-color:"+Color.Cell(Main.user.rank));
 //            id=Main.user.id;
 //            name=Main.user.name;
 //            rank=Main.user.rank;

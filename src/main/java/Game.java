@@ -37,8 +37,9 @@ public class Game {
 
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){
-                CellsValue[i][j]=(i+1)*10+j+1;
+                CellsValue[i][j]=1<<(i+j);
                 Cells[i][j].setText(Integer.toString(CellsValue[i][j]));
+                Cells[i][j].setStyle("-fx-background-color:"+Color.Cell(CellsValue[i][j]));
             }
         }
         Scene scene=new Scene(Main.gameRoot,720,569);

@@ -9,13 +9,19 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 public class Main extends Application {
     public static User user;
+
     public static UserCard userCard;
     public static Pane userCardRoot;
+
     public static Clock clock;
+
     public static Game game;
     public static AnchorPane gameRoot;
+
     public static Menu menu;
+
     public static Stage stage;
+
     @Override
     public void init() {
         System.out.println("Init game");
