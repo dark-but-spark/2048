@@ -15,6 +15,14 @@ public class Menu {
     private void startAction(){
         System.out.println("Game started!");
         Main.clock.f[1]=0;
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("Game.fxml"));
+            Main.gameRoot=loader.load();
+            Main.game=loader.getController();
+
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
         Main.game.initGame();
 
 

@@ -11,7 +11,12 @@
             fx:controller="Game"
             prefHeight="570" prefWidth="720"
             stylesheets="@Game.css">
-    <VBox spacing="10" layoutX="100" layoutY="100">
+
+    <VBox spacing="10" layoutX="100" layoutY="10">
+        <HBox spacing="100" alignment="TOP_CENTER">
+            <Label fx:id="Score" styleClass="score"/>
+            <Label fx:id="MaxScore" styleClass="score"/>
+        </HBox>
         <HBox spacing="10">
             <Label fx:id="Cell00" styleClass="cell"/>
             <Label fx:id="Cell01" styleClass="cell"/>
@@ -35,6 +40,14 @@
             <Label fx:id="Cell31" styleClass="cell"/>
             <Label fx:id="Cell32" styleClass="cell"/>
             <Label fx:id="Cell33" styleClass="cell"/>
+        </HBox>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="返回主菜单" styleClass="btn" onMouseReleased="#returnMenu"/>
+            <Button text="重新开始" styleClass="btn" onMouseReleased="#initGame"/>
+            <Button text="退出游戏" styleClass="btn" onMouseReleased="#exitGame"/>
+        </HBox>
+        <HBox>
+            <Button />
         </HBox>
 
     </VBox>

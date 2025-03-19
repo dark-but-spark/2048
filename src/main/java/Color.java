@@ -1,7 +1,7 @@
 public class Color {
     public static String Cell(int x) {
         if (x <= 1) {
-            return "#FFFFFF";
+            return "#CDC1B4";
         } else if (x <= 2) {
             return "pink";
         } else if (x <= 4) {

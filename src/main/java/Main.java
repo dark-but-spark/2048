@@ -44,14 +44,7 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("Game.fxml"));
-            gameRoot=loader.load();
-            game=loader.getController();
 
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
         clock.f[1]=1;
         clock.refreshStart();
         menu.initMenu();
