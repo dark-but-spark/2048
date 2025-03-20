@@ -48,6 +48,15 @@
             <artifactId>javafx-graphics</artifactId>
             <version>23.0.2</version>
         </dependency>
+
+
+        <!-- MySQL Connector Dependency -->
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <version>9.2.0</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
