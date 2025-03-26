@@ -8,6 +8,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import static java.lang.System.exit;
+
 public class Main extends Application {
     public static User user;
 
@@ -23,14 +26,18 @@ public class Main extends Application {
 
     public static Stage stage;
 
+    public static DataBase dataBase;
+
 
     @Override
     public void init() {
         System.out.println("Init game");
-        user= new User(1,"admin",0,0);
+        user= new User(-1,"guest",0,0);
         clock=new Clock();
         game=new Game();
         menu=new Menu();
+        dataBase=new DataBase();
+
     }
     @Override
     public void start(Stage primarystage) {
@@ -44,11 +51,13 @@ public class Main extends Application {
             userCard = loader.getController();
         } catch (Exception e) {
             e.printStackTrace();
+            exit(0);
         }
 
         clock.f[1]=1;
         clock.refreshStart();
         menu.initMenu();
+
     }
     @Override
     public void stop() {
