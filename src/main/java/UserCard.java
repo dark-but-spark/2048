@@ -9,7 +9,14 @@ import javafx.scene.shape.Rectangle;
 import java.security.KeyStore;
 
 public class UserCard {
-    public int cnt=0xFFFFFF;
+    public int cnt = 0xFFFFFF;
+    public User user;
+
+    public UserCard() {
+        this.user = new User(-1, "guest", 0, 0);
+    }
+
+    //用户信息的显示------------------------------------
     @FXML
     private VBox userInfo;
     @FXML
@@ -18,11 +25,28 @@ public class UserCard {
     private Label nameLabel;
     @FXML
     private Label rankLabel;
+    public void refreshUserCard() {//刷新用户卡片 clock调用
+        user.rank = (int) (user.maxScore * 0.01 + user.times * 0.5);
+//        System.out.println("User card refreshed!");
+        try {
+//            System.out.printf("%d %s %d\n",user.id,user.name,user.rank);
+            this.idLabel.setText("ID:" + Integer.toString(user.id));
+            this.nameLabel.setText("Name:" + user.name);
+            this.rankLabel.setText(Integer.toString(user.rank));
+//            String color = String.format("-fx-background-color:#%06XA0;", cnt);
+            this.rankLabel.setStyle("-fx-background-color:" + Color.Cell(user.rank));
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+    }
+
+    //登录注册的按钮------------------------------------
     @FXML
     private HBox loginHbox;
 
+    //登录部分-------------------------------------
     @FXML
     private VBox loginCard;
     @FXML
@@ -31,22 +55,19 @@ public class UserCard {
     private PasswordField loginPWD;
 
     @FXML
-    private void initLoginMenu()
-    {
+    private void initLoginMenu() {
         userInfo.setVisible(false);
         loginHbox.setVisible(false);
         loginCard.setVisible(true);
     }
 
     @FXML
-    private void loginSubmit()
-    {
-        String name=loginName.getText();
-        String pwd=loginPWD.getText();
-        if(Main.dataBase.login(name,pwd)) {
-            Main.user=Main.dataBase.getUser(name);
-        }
-        else{
+    private void loginSubmit() {
+        String name = loginName.getText();
+        String pwd = loginPWD.getText();
+        if (Main.dataBase.login(name, pwd)) {
+            user = Main.dataBase.getUser(name);
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText("Login failed!");
@@ -58,6 +79,7 @@ public class UserCard {
         loginCard.setVisible(false);
     }
 
+    //注册部分-------------------------------------
     @FXML
     private VBox registerCard;
     @FXML
@@ -68,25 +90,22 @@ public class UserCard {
     private PasswordField registerPWD2;
 
     @FXML
-    private void initRegisterMenu()
-    {
+    private void initRegisterMenu() {
 
         userInfo.setVisible(false);
         loginHbox.setVisible(false);
         registerCard.setVisible(true);
     }
+
     @FXML
-    private void registerSubmit()
-    {
-        String name=registerName.getText();
-        String pwd=registerPWD.getText();
-        String pwd2=registerPWD2.getText();
-        if(pwd.equals(pwd2))
-        {
-            Main.dataBase.register(name,pwd);
-            Main.user=Main.dataBase.getUser(name);
-        }
-        else{
+    private void registerSubmit() {
+        String name = registerName.getText();
+        String pwd = registerPWD.getText();
+        String pwd2 = registerPWD2.getText();
+        if (pwd.equals(pwd2)) {
+            Main.dataBase.register(name, pwd);
+            user = Main.dataBase.getUser(name);
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText("Register failed!");
@@ -98,23 +117,7 @@ public class UserCard {
         registerCard.setVisible(false);
     }
 
-    public void refreshUserCard()
-    {
-        Main.user.rank=(int)(Main.user.maxScore*0.01+Main.user.times*0.5);
-//        System.out.println("User card refreshed!");
-        try{
-//            System.out.printf("%d %s %d\n",Main.user.id,Main.user.name,Main.user.rank);
-            this.idLabel.setText("ID:"+Integer.toString(Main.user.id));
-            this.nameLabel.setText("Name:"+Main.user.name);
-            this.rankLabel.setText(Integer.toString(Main.user.rank));
-            String color=String.format("-fx-background-color:#%06XA0;",cnt);
-            this.rankLabel.setStyle("-fx-background-color:"+Color.Cell(Main.user.rank));
 
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-
-    }
     //    @FXML
 //    public int id,rank;
 //    @FXML

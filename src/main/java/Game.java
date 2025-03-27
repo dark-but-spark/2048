@@ -11,17 +11,19 @@ import javafx.stage.Stage;
 
 public class Game {
     // This is a class that represents the game
+
+    //这些连接到fxml的变量
     @FXML
     private Label Cell00,Cell01,Cell02,Cell03,
             Cell10,Cell11,Cell12,Cell13,
             Cell20,Cell21,Cell22,Cell23,
-            Cell30,Cell31,Cell32,Cell33;
+            Cell30,Cell31,Cell32,Cell33;//16个格子
     @FXML
-    private Label Score,MaxScore;
+    private Label Score,MaxScore;//分数
     @FXML
-    private Pane GameOverPane;
+    private Pane GameOverPane; //游戏结束的面板
     @FXML
-    private Pane MoreButton;
+    private Pane MoreButton; //更多的按钮 用于隐藏
 
     private Label[][] Cells;
     private int[][] CellsValue;
@@ -29,23 +31,9 @@ public class Game {
     public Game()
     {
     }
-    @FXML
-    private void showButton(){
-        Thread thread = new Thread(() -> {
-            MoreButton.setVisible(true);
-            try{
-                Thread.sleep(5000);
-            }catch(InterruptedException e){
-                e.printStackTrace();
-            }
-            MoreButton.setVisible(false);
 
-
-        });
-        thread.start();
-    }
     @FXML
-    private void keyAction(KeyEvent event)
+    private void keyAction(KeyEvent event)//键盘事件
     {
         KeyCode keyCode = event.getCode();
 //        System.out.println("Key Pressed: " + keyCode.getName());
@@ -79,20 +67,35 @@ public class Game {
     }
 
     @FXML
-    private void returnMenu(){
+    private void showButton(){//创建新进程用于控制按钮的显示 5s后隐藏
+        Thread thread = new Thread(() -> {
+            MoreButton.setVisible(true);
+            try{
+                Thread.sleep(5000);
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+            MoreButton.setVisible(false);
+
+
+        });
+        thread.start();
+    }
+    @FXML
+    private void returnMenu(){//返回菜单
         System.out.println("Return to menu!");
         Main.clock.f[2]=0;
         Main.clock.f[1]=1;
         Main.menu.initMenu();
     }
     @FXML
-    private void exitGame()
+    private void exitGame()//退出游戏
     {
         System.out.println("Good bye!");
         System.exit(0);
     }
     @FXML
-    public void restartGame(){
+    public void restartGame(){//重新开始游戏
         System.out.println("Game is restarting!");
         GameOverPane.setVisible(false);
         for(int i=0;i<4;i++){
@@ -101,10 +104,12 @@ public class Game {
             }
         }
         this.randomPlace();this.randomPlace();
-        Main.user.score=0;
-        Main.user.times++;
+        Main.userCard.user.score=0;
+        Main.userCard.user.times++;
     }
-    public void initGame(){
+
+
+    public void initGame(){//初始化游戏
         System.out.println("Game is starting!");
         GameOverPane.setVisible(false);
         Cells=new Label[4][4];
@@ -112,16 +117,17 @@ public class Game {
         Cells[0][0]=Cell00;Cells[0][1]=Cell01;Cells[0][2]=Cell02;Cells[0][3]=Cell03;
         Cells[1][0]=Cell10;Cells[1][1]=Cell11;Cells[1][2]=Cell12;Cells[1][3]=Cell13;
         Cells[2][0]=Cell20;Cells[2][1]=Cell21;Cells[2][2]=Cell22;Cells[2][3]=Cell23;
-        Cells[3][0]=Cell30;Cells[3][1]=Cell31;Cells[3][2]=Cell32;Cells[3][3]=Cell33;
+        Cells[3][0]=Cell30;Cells[3][1]=Cell31;Cells[3][2]=Cell32;Cells[3][3]=Cell33;//将数组连接到fxml的控制量上
 
+        //初始化为0
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){
                 CellsValue[i][j]=0;
             }
         }
         this.randomPlace();this.randomPlace();
-        Main.user.score=0;
-        Main.user.times++;
+        Main.userCard.user.score=0;
+        Main.userCard.user.times++;
 
         Main.clock.f[2]=1;
         Scene scene=new Scene(Main.gameRoot,720,569);
@@ -144,10 +150,10 @@ public class Game {
     }
 
     //This is a method that refresh the game
-    public void refreshGame()
+    public void refreshGame()//刷新游戏 由clock调用
     {
-        Score.setText("Score: "+Main.user.score);
-        MaxScore.setText("MaxScore: "+Main.user.maxScore);
+        Score.setText("Score: "+Main.userCard.user.score);
+        MaxScore.setText("MaxScore: "+Main.userCard.user.maxScore);
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if(CellsValue[i][j]!=0) {
@@ -185,18 +191,18 @@ public class Game {
 
     //This is a method that update the score
     public void updateScore(int x){
-        Main.user.score+=x;
-        if(Main.user.score>Main.user.maxScore)
+        Main.userCard.user.score+=x;
+        if(Main.userCard.user.score>Main.userCard.user.maxScore)
         {
-            Main.user.maxScore=Main.user.score;
+            Main.userCard.user.maxScore=Main.userCard.user.score;
         }
     }
-    int[] newValue;
+    private int[] newValue;
     //This is a method that move the elements
     public void move(int id) {//1:up 2:down 3:left 4:right
         int f_change = 0;
 
-        if (id == 1 || id == 2) {
+        if (id == 1 || id == 2) {//up or down
             for (int j = 0; j < 4; j++) {
                 int[] column = new int[4];
                 for (int i = 0; i < 4; i++) {
@@ -210,9 +216,9 @@ public class Game {
                     CellsValue[i][j] = newValue[i];
 
                 }
-                newValue = null;
+                newValue = null;//释放内存
             }
-        } else if (id == 3 || id == 4) {
+        } else if (id == 3 || id == 4) {// left or right
             for (int i = 0; i < 4; i++) {
                 int[] row = new int[4];
                 for (int j = 0; j < 4; j++) {
@@ -228,10 +234,10 @@ public class Game {
                 newValue = null;
             }
         }
-        if (f_change == 1) {
+        if (f_change == 1) {//如果有变化 就放置新的元素
             this.randomPlace();
         }
-        if (gameOver())
+        if (gameOver())//如果游戏结束就显示游戏结束的面板
         {
             GameOverPane.setVisible(true);
         }
@@ -241,14 +247,14 @@ public class Game {
     public void transform(int[] column, boolean id){
         newValue=new int[4];
         int k=0;
-        for(int i=0;i<4;i++)
+        for(int i=0;i<4;i++)//去掉0
         {
             if(column[i]!=0)
             {
                 newValue[k++]=column[i];
             }
         }
-        if(!id)
+        if(!id)//如果是向下或者向右 先倒置
         {
             for(int i=0;i*2<k;i++)
             {
@@ -258,7 +264,7 @@ public class Game {
             }
 
         }
-        for(int i=0;i<k-1;i++)
+        for(int i=0;i<k-1;i++)//合并
         {
             if(newValue[i]==newValue[i+1])
             {
@@ -271,11 +277,11 @@ public class Game {
                 newValue[k-1]=0;
             }
         }
-        while(k<4)
+        while(k<4)//补0
         {
             newValue[k++]=0;
         }
-        if(!id)
+        if(!id)//倒置回来
         {
             for(int i=0;i*2<k;i++)
             {
