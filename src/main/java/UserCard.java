@@ -46,6 +46,10 @@ public class UserCard {
     @FXML
     private HBox loginHbox;
 
+    //登出的按钮------------------------------------
+    @FXML
+    private HBox logoutHbox;
+
     //登录部分-------------------------------------
     @FXML
     private VBox loginCard;
@@ -65,17 +69,30 @@ public class UserCard {
     private void loginSubmit() {
         String name = loginName.getText();
         String pwd = loginPWD.getText();
-        if (Main.dataBase.login(name, pwd)) {
+        loginName.clear();
+        loginPWD.clear();
+        if(Main.dataBase.login(name, pwd)){
             user = Main.dataBase.getUser(name);
-        } else {
+            loginIN();
+        } else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText("Login failed!");
             alert.setContentText("Please check your name and password!");
             alert.showAndWait();
         }
+
+    }
+    @FXML
+    private void loginBack(){
         userInfo.setVisible(true);
         loginHbox.setVisible(true);
+        loginCard.setVisible(false);
+
+    }
+    private void loginIN(){
+        userInfo.setVisible(true);
+        logoutHbox.setVisible(true);
         loginCard.setVisible(false);
     }
 
@@ -102,9 +119,22 @@ public class UserCard {
         String name = registerName.getText();
         String pwd = registerPWD.getText();
         String pwd2 = registerPWD2.getText();
+        registerName.clear();
+        registerPWD.clear();
+        registerPWD2.clear();
         if (pwd.equals(pwd2)) {
-            Main.dataBase.register(name, pwd);
-            user = Main.dataBase.getUser(name);
+            try{
+                Main.dataBase.register(name, pwd);
+                user = Main.dataBase.getUser(name);
+                registerIN();
+            }catch(Exception e)
+            {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText("Register failed!");
+                alert.setContentText("Please check your name!");
+                alert.showAndWait();
+            }
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information Dialog");
@@ -112,9 +142,30 @@ public class UserCard {
             alert.setContentText("Please check your password!");
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    private void registerBack(){
         userInfo.setVisible(true);
         loginHbox.setVisible(true);
         registerCard.setVisible(false);
+    }
+    private void registerIN(){
+        userInfo.setVisible(true);
+        logoutHbox.setVisible(true);
+        registerCard.setVisible(false);
+    }
+
+    //登出部分-------------------------------------
+    @FXML
+    private void logout()
+    {
+        Main.dataBase.update(user);
+
+        user = new User(-1, "guest", 0, 0);
+
+        loginHbox.setVisible(true);
+        logoutHbox.setVisible(false);
     }
 
 

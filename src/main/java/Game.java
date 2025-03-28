@@ -86,17 +86,22 @@ public class Game {
         System.out.println("Return to menu!");
         Main.clock.f[2]=0;
         Main.clock.f[1]=1;
+        Main.dataBase.update(Main.userCard.user);
         Main.menu.initMenu();
     }
     @FXML
     private void exitGame()//退出游戏
     {
+        Main.dataBase.update(Main.userCard.user);
         System.out.println("Good bye!");
         System.exit(0);
     }
     @FXML
     public void restartGame(){//重新开始游戏
         System.out.println("Game is restarting!");
+
+        Main.dataBase.update(Main.userCard.user);
+
         GameOverPane.setVisible(false);
         for(int i=0;i<4;i++){
             for(int j=0;j<4;j++){

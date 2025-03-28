@@ -29,6 +29,7 @@ public class Menu {
     }
     @FXML
     private void exitAction(){//退出游戏
+        Main.dataBase.update(Main.userCard.user);
         System.out.println("Good bye!");
         System.exit(0);
     }

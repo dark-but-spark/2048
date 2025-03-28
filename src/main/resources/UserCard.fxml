@@ -27,6 +27,11 @@
                 <Button styleClass="btn" text="Login" onMouseReleased="#initLoginMenu" />
                 <Button  styleClass="btn" text="Register" onMouseReleased="#initRegisterMenu" />
         </HBox>
+<!--        登出按钮-->
+        <HBox fx:id="logoutHbox" alignment="CENTER" spacing="10" visible="false">
+            <Button styleClass="btn" text="Logout" onMouseReleased="#logout" />
+        </HBox>
+
 
 <!--    <Label  styleClass="idLabel" text="${id}" />-->
 <!--    <Label  styleClass="nameLabel" text="${name}"/>-->
@@ -43,7 +48,10 @@
             <Label styleClass="nameLabel" text="password:"/>
             <PasswordField fx:id="loginPWD"/>
         </HBox>
-        <Button onMouseReleased="#loginSubmit" text="submit"/>
+        <HBox spacing="10">
+            <Button onMouseReleased="#loginBack" text="back" styleClass="btn"/>
+            <Button onMouseReleased="#loginSubmit" text="submit" styleClass="btn"/>
+        </HBox>
     </VBox>
 
 <!--    注册界面-->
@@ -60,6 +68,10 @@
             <Label styleClass="nameLabel" text="confirm password:"/>
             <PasswordField fx:id="registerPWD2"/>
         </HBox>
-        <Button onMouseReleased="#registerSubmit" text="submit"/>
+        <HBox spacing="10">
+            <Button onMouseReleased="#registerBack" text="back" styleClass="btn"/>
+            <Button onMouseReleased="#registerSubmit" text="submit" styleClass="btn"/>
+        </HBox>
     </VBox>
+
 </Pane>
