@@ -2,11 +2,15 @@ import javafx.application.Platform;
 
 public class Clock {
 
-    public int FPS=60;
-    public int tick=1000/FPS;
-    public int f[]=new int[100];
+    public int FPS=60;//每秒刷新频率
+    public int tick=1000/FPS;//每次刷新的时间间隔
+    public int f[]=new int[100];//刷新任务的列表
+    //f[1] UserCard刷新
+    //f[2] Game刷新
+
+
     public void refreshStart(){
-        Thread thread = new Thread(() -> {refresh();});
+        Thread thread = new Thread(() -> {refresh();});//建立刷新线程
         thread.start();
     }
     public void refresh(){

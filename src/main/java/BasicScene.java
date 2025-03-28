@@ -3,7 +3,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-public class BasicScene {
+public class BasicScene {//简单的小测试 但是所有元素堆在一起 开始尝试使用fxml
     public static void Menu(Stage primaryStage){
         Label label = new Label("Hello, 2048!");
         Button startButton= new Button("Start Game");

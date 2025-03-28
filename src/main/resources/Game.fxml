@@ -14,10 +14,14 @@
 
 
     <VBox spacing="10" layoutX="100" layoutY="10">
+
+<!--        分数部分-->
         <HBox spacing="100" alignment="TOP_CENTER">
             <Label fx:id="Score" styleClass="score"/>
             <Label fx:id="MaxScore" styleClass="score"/>
         </HBox>
+
+<!--        游戏主体部分-->
         <HBox spacing="10">
             <Label fx:id="Cell00" styleClass="cell"/>
             <Label fx:id="Cell01" styleClass="cell"/>
@@ -42,6 +46,8 @@
             <Label fx:id="Cell32" styleClass="cell"/>
             <Label fx:id="Cell33" styleClass="cell"/>
         </HBox>
+
+<!--        按钮部分-->
         <HBox spacing="10" alignment="CENTER">
             <Button text="游戏选项" styleClass="btn" onMouseReleased="#showButton"/>
             <Pane fx:id="MoreButton" visible="false" managed="true">
@@ -55,6 +61,8 @@
             </Pane>
         </HBox>
     </VBox>
+
+<!--    游戏结束界面-->
     <Pane fx:id="GameOverPane" style="-fx-background-color: transparent;" prefWidth="720" prefHeight="570" visible="true" managed="true">
         <children>
             <VBox spacing="50" alignment="CENTER" layoutX="150" layoutY="10" styleClass="gameover">

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class User {
+public class User {//user的整体控制
     public String name;
     public int id;
     public int maxScore;

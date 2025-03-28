@@ -14,16 +14,15 @@
     <Rectangle arcHeight="10" arcWidth="10"  styleClass="user-card" width="200" height="200"/>
 
     <VBox alignment="CENTER" prefHeight="200" prefWidth="200" spacing="10">
-<!--<Button-->
-<!--    alignment="TOP_CENTER"-->
-<!--    styleClass="user-card"-->
-<!--    prefHeight="300" prefWidth="300">-->
-<!--</Button>-->
+
+<!--        用户信息-->
         <VBox fx:id="userInfo" alignment="CENTER">
                     <Label fx:id="idLabel" styleClass="idLabel" />
                     <Label fx:id="nameLabel" styleClass="nameLabel" />
                     <Label fx:id="rankLabel" styleClass="rankLabel" alignment="CENTER"  />
         </VBox>
+
+<!--        登录注册按钮-->
         <HBox fx:id="loginHbox" alignment="CENTER" spacing="10" >
                 <Button styleClass="btn" text="Login" onMouseReleased="#initLoginMenu" />
                 <Button  styleClass="btn" text="Register" onMouseReleased="#initRegisterMenu" />
@@ -34,7 +33,7 @@
 <!--    <Label  styleClass="rankLabel" text="${rank}"/>-->
     </VBox>
 
-
+<!--    登录界面-->
     <VBox fx:id="loginCard" alignment="CENTER" spacing="10"  visible="false" prefHeight="200" prefWidth="200">
         <HBox>
             <Label styleClass="nameLabel" text="name:"/>
@@ -46,6 +45,8 @@
         </HBox>
         <Button onMouseReleased="#loginSubmit" text="submit"/>
     </VBox>
+
+<!--    注册界面-->
     <VBox fx:id="registerCard" alignment="CENTER" spacing="10"  visible="false" prefHeight="200" prefWidth="200">
         <HBox>
             <Label styleClass="nameLabel" text="name:"/>

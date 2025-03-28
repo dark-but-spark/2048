@@ -12,7 +12,7 @@ public class Menu {
         ;
     }
     @FXML
-    private void startAction(){
+    private void startAction(){//开始游戏
         System.out.println("Game started!");
         Main.clock.f[1]=0;
         try{
@@ -28,17 +28,20 @@ public class Menu {
 
     }
     @FXML
-    private void exitAction(){
+    private void exitAction(){//退出游戏
         System.out.println("Good bye!");
         System.exit(0);
     }
-    public void initMenu() {
+
+
+
+    public void initMenu() {//初始化菜单
         System.out.println("Menu initialized!");
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Menu.fxml"));
             AnchorPane menuRoot = loader.load();
-            menuRoot.getChildren().add(Main.userCardRoot);
+            menuRoot.getChildren().add(Main.userCardRoot);//将用户卡片加入菜单 采用add方法
             Scene scene = new Scene(menuRoot, 720, 569);
             Main.stage.setTitle("2048");
             Main.stage.setScene(scene);

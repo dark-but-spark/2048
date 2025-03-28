@@ -1,5 +1,5 @@
-public class Color {
-    public static String Cell(int x) {
+public class Color {//静态方法 用于处理一些随值变化场景 暂用名color
+    public static String Cell(int x) {//处理了每个cell的背景颜色
         if (x <= 1) {
             return "#CDC1B4";
         } else if (x <= 2) {

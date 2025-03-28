@@ -13,23 +13,19 @@
         xmlns="http://javafx.com/javafx/23.0.2"
         xmlns:fx="http://javafx.com/fxml/1">
     <HBox>
-    <!--        <ImageView fitHeight="569" fitWidth="720" pickOnBounds="true" preserveRatio="true">-->
-    <!--            <image>-->
-    <!--                <Image url="@./img/bkg.jpg" />-->
-    <!--            </image>-->
-    <!--        </ImageView>-->
+        <!--        <ImageView fitHeight="569" fitWidth="720" pickOnBounds="true" preserveRatio="true">-->
+        <!--            <image>-->
+        <!--                <Image url="@./img/bkg.jpg" />-->
+        <!--            </image>-->
+        <!--        </ImageView>-->
 
-    <VBox spacing="20" prefHeight="0" prefWidth="0" BorderPane.alignment="CENTER">
-        <Button mnemonicParsing="false" onMouseReleased="#startAction"  styleClass="btn" text="开始游戏">
-            <!--            <font>-->
-            <!--                <Font name="Minecraft Pixel" size="50.0" />-->
-            <!--            </font>-->
-        </Button>
-        <Button mnemonicParsing="false" onMouseReleased="#exitAction"  styleClass="btn" text="退出游戏">
-            <!--                            <font>-->
-            <!--                                <Font name="Minecraft Pixel" size="50.0" />-->
-            <!--                            </font>-->
-        </Button>
-    </VBox>
+        <VBox spacing="20" prefHeight="0" prefWidth="0" BorderPane.alignment="CENTER">
+            <!--        游戏按钮-->
+            <Button mnemonicParsing="false" onMouseReleased="#startAction" styleClass="btn" text="开始游戏">
+            </Button>
+            <Button mnemonicParsing="false" onMouseReleased="#exitAction" styleClass="btn" text="退出游戏">
+            </Button>
+
+        </VBox>
     </HBox>
 </AnchorPane>
